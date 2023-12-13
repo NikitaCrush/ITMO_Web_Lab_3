@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.8.22'
-    id 'org.jetbrains.kotlin.plugin.allopen' version '1.8.22'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.20'
+    id 'org.jetbrains.kotlin.plugin.allopen' version '1.7.20'
     id 'war'
 
 }
@@ -42,6 +42,7 @@ dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-api:10.0.0')
     compileOnly('jakarta.mvc:jakarta.mvc-api:2.1.0')
     compileOnly('jakarta.xml.ws:jakarta.xml.ws-api:4.0.0')
+    compileOnly('commons-beanutils:commons-beanutils:1.9.4')
     implementation('jakarta.transaction:jakarta.transaction-api:2.0.1')
 
     implementation('org.eclipse.persistence:org.eclipse.persistence.jpa:4.0.1')
