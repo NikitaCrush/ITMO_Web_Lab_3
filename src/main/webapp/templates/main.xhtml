@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="ru">
+<h:head>
+    <title>Проверка точки</title>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputScript library="js" name="drawCoordinatePlane.js"/>
+</h:head>
+<h:body>
+    <header>
+        <h1>Проверка попадания точки в график</h1>
+        <h2>Родионов Артем Алексеевич <span>P3221</span></h2>
+        <h2>Вариант - <span>3127</span></h2>
+    </header>
+    <div class="content">
+        <div id="notification">
+            <!-- Notification content -->
+        </div>
+
+        <h:form id="mainForm">
+            <table>
+                <thead>
+                <tr>
+                    <th colspan="3">Введите данные для определения вхождения точки в представленную область</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <h3>X</h3>
+                        <div class="xButtons">
+                            <p>
+                                <!-- X buttons -->
+                                <h:commandButton id="x_button_-3" value="-3" action="#{areaCheckBean.setX(-3)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_-2" value="-2" action="#{areaCheckBean.setX(-2)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_-1" value="-1" action="#{areaCheckBean.setX(-1)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_0" value="0" action="#{areaCheckBean.setX(0)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_1" value="1" action="#{areaCheckBean.setX(1)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_2" value="2" action="#{areaCheckBean.setX(2)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_3" value="3" action="#{areaCheckBean.setX(3)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_4" value="4" action="#{areaCheckBean.setX(4)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:commandButton id="x_button_5" value="5" action="#{areaCheckBean.setX(5)}">
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
+                                </h:commandButton>
+
+                                <h:inputHidden id="hiddenX" value="#{areaCheckBean.x}"/>
+
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <h3>Y</h3>
+                        <p>
+                            <h:inputText id="inputY" maxlength="5" size="6" value="#{areaCheckBean.y}"
+                                         placeholder=" от -5 до 3"/>
+                        </p>
+                    </td>
+                    <td>
+                        <canvas id="coordinateCanvas" width="500" height="500"
+                                style="border: 1px solid black;"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h3>R</h3>
+                        <p>
+                            <h:inputText id="inputR" maxlength="5" size="6" value="#{areaCheckBean.r}"
+                                         placeholder=" от 2 до 5"/>
+                        </p>
+                    </td>
+
+                    <td style="background: #0000;">
+                        <div class="buttons">
+                            <h:commandButton styleClass="checkButton buttonLetter" value="Выполнить проверку"
+                                             action="#{areaCheckBean.checkArea}">
+                            </h:commandButton>
+
+
+                            <h:commandButton styleClass="clearButton buttonLetter" value="Очистить таблицу"
+                                             action="#{clearResultsBean.clearResults}">
+                            </h:commandButton>
+                            <h:button styleClass="startPageButton buttonLetter" outcome="change_to_index"
+                                      value="Start Page"/>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </h:form>
+
+        <div id="resultsTable">
+            <h:dataTable value="#{loadResultsBean.results}" var="result">
+                <!--suppress ELSpecValidationInJSP -->
+                <h:column><f:facet name="header">X</f:facet>#{result.x}</h:column>
+                <!--suppress ELSpecValidationInJSP -->
+                <h:column><f:facet name="header">Y</f:facet>#{result.y}</h:column>
+                <!--suppress ELSpecValidationInJSP -->
+
+                <h:column><f:facet name="header">R</f:facet>#{result.r}</h:column>
+                <!--suppress ELSpecValidationInJSP -->
+
+                <h:column><f:facet name="header">Result</f:facet>#{result.result ? 'Hit' : 'Miss'}</h:column>
+                <!--suppress ELSpecValidationInJSP -->
+
+                <h:column><f:facet name="header">User Time</f:facet>#{result.timestamp}</h:column>
+                <!--suppress ELSpecValidationInJSP -->
+
+                <h:column><f:facet name="header">Script Time</f:facet>#{result.executionTime} ms</h:column>
+            </h:dataTable>
+        </div>
+    </div>
+</h:body>
+</html>

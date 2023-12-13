@@ -1,0 +1,47 @@
+<faces-config xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                                  https://jakarta.ee/xml/ns/jakartaee/faces-config_3_0.xsd"
+              version="3.0">
+    <application>
+        <!-- Application-specific configurations -->
+    </application>
+    <navigation-rule>
+        <from-view-id>templates/start.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>change_to_main</from-outcome>
+            <to-view-id>templates/main.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+
+    <navigation-rule>
+        <from-view-id>templates/main.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>change_to_index</from-outcome>
+            <to-view-id>templates/start.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <!-- Managed beans and other configurations -->
+    <managed-bean>
+        <managed-bean-name>areaCheckBean</managed-bean-name>
+        <managed-bean-class>beans.AreaCheckBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>clearResultsBean</managed-bean-name>
+        <managed-bean-class>beans.ClearResultsBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>loadResultsBean</managed-bean-name>
+        <managed-bean-class>beans.LoadResultsBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+</faces-config>

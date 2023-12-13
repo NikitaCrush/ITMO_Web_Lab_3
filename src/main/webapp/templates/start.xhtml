@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <title>Start Page</title>
+    <h:outputStylesheet library="css" name="style.css" />
+
+    <script>
+        function updateClock() {
+            let now = new Date();
+            let clock = document.getElementById('clock');
+            clock.innerHTML = now.toLocaleTimeString();
+        }
+
+        setInterval(updateClock, 11000); // Update the time every 11 seconds
+        window.onload = updateClock; // Set initial time on page load
+    </script>
+</head>
+<body>
+<header>
+    <h1>Проверка попадания точки в график</h1>
+    <h2>Родионов Артем Алексеевич <span>P3221</span></h2>
+    <h2>Вариант - <span>3127</span></h2>
+</header>
+<h:panelGroup layout="block">
+    <p>Current time: <span id="clock"></span></p>
+    <h:button outcome="change_to_main" value="Coordinate Checker">
+    </h:button>
+
+</h:panelGroup>
+</body>
+</html>
