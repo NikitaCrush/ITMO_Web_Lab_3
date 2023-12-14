@@ -1,6 +1,8 @@
 package beans
 
 import jakarta.enterprise.context.SessionScoped
+import jakarta.faces.application.FacesMessage
+import jakarta.faces.validator.ValidatorException
 import jakarta.inject.Named
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
@@ -34,6 +36,29 @@ open class AreaCheckBean : Serializable {
             result = result,
             executionTime = (endTime - startTime) / 1000
         )
+
+//        fun validateY(y: Double?) {
+//            if (!(y is Number)) {
+//                val message = FacesMessage("Y must be numeric")
+//                throw ValidatorException(message)
+//            }
+//
+//            if ((y < -5) || (y > 3)) {
+//                val message = FacesMessage("y needs to be > -5 and < 3")
+//                throw ValidatorException(message)
+//            }
+//        }
+//        fun validateR(r: Double?) {
+//            if (!(r is Number)) {
+//                val message = FacesMessage("R must be numeric")
+//                throw ValidatorException(message)
+//            }
+//
+//            if ((r < 2) || (r > 5)) {
+//                val message = FacesMessage("r needs to be > 2 and < 5")
+//                throw ValidatorException(message)
+//            }
+//        }
 
         entityManager.persist(resultData)
     }
