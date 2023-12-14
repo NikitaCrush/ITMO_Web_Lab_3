@@ -28,5 +28,9 @@ data class ResultData(
     val timestamp: LocalDateTime = LocalDateTime.now(),
 
     @Column(name = "execution_time")
-    val executionTime: Long = 0
+    val executionTime: Long = 0,
+
+    @Column(name = "session_id")
+    val sessionId: String? = null
+
 ) : Serializable
