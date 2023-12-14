@@ -33,65 +33,48 @@
                         <div class="xButtons">
                             <!-- X buttons -->
                             <div>
-                                <h:commandButton id="x_button_-3" value="-3" action="#{areaCheckBean.setX(-3)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
-                                </h:commandButton>
+                                <h:commandButton id="x_button_-3" value="-3" action="#{areaCheckBean.setX(-3)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_-2" value="-2" action="#{areaCheckBean.setX(-2)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_-2" value="-2" action="#{areaCheckBean.setX(-2)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_-1" value="-1" action="#{areaCheckBean.setX(-1)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_-1" value="-1" action="#{areaCheckBean.setX(-1)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_0" value="0" action="#{areaCheckBean.setX(0)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_0" value="0" action="#{areaCheckBean.setX(0)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_1" value="1" action="#{areaCheckBean.setX(1)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_1" value="1" action="#{areaCheckBean.setX(1)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_2" value="2" action="#{areaCheckBean.setX(2)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_2" value="2" action="#{areaCheckBean.setX(2)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_3" value="3" action="#{areaCheckBean.setX(3)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_3" value="3" action="#{areaCheckBean.setX(3)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_4" value="4" action="#{areaCheckBean.setX(4)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_4" value="4" action="#{areaCheckBean.setX(4)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                             <div>
-                                <h:commandButton id="x_button_5" value="5" action="#{areaCheckBean.setX(5)}">
-                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
+                                <h:commandButton id="x_button_5" value="5" action="#{areaCheckBean.setX(5)}" execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
-                                </h:commandButton>
                             </div>
 
                                 <h:inputHidden id="hiddenX" value="#{areaCheckBean.x}"/>
@@ -106,8 +89,7 @@
                         </p>
                     </td>
                     <td>
-                        <canvas id="coordinateCanvas" width="500" height="500"
-                                style="border: 1px solid black;"></canvas>
+                        <canvas id="coordinateCanvas" width="500" height="500"></canvas>
                     </td>
                 </tr>
                 <tr>
