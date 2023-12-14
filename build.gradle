@@ -51,7 +51,6 @@ dependencies {
     implementation('org.glassfish:jakarta.faces:4.0.2')
 
 
-
     implementation('org.hibernate:hibernate-core:6.2.4.Final')
     implementation 'org.postgresql:postgresql:42.6.0'
 
