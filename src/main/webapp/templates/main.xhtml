@@ -7,13 +7,11 @@
     <title>Проверка точки</title>
     <h:outputStylesheet library="css" name="style.css"/>
     <h:outputScript library="js" name="drawCoordinatePlane.js"/>
-    <h:outputScript library="js" name="validate.js"/>
-    <h:outputScript library="js" name="selectX.js"/>
 </h:head>
 <h:body>
     <header>
         <h1>Проверка попадания точки в график</h1>
-        <h2>Родионов Артем Алексеевич и Логунова Алиса Андреевна<span>P3221</span></h2>
+        <h2>Родионов Артем Алексеевич и Логунова Алиса Андреевна <span>P3221</span></h2>
         <h2>Вариант - <span>2154</span></h2>
     </header>
     <div class="content">
@@ -21,7 +19,7 @@
             <!-- Notification content -->
         </div>
 
-        <h:form id="mainForm" onsubmit="return validate()">
+        <h:form id="mainForm">
             <table>
                 <thead>
                 <tr>
@@ -33,55 +31,71 @@
                     <td>
                         <h3>X</h3>
                         <div class="xButtons">
-                            <p>
-                                <!-- X buttons -->
+                            <!-- X buttons -->
+                            <div>
                                 <h:commandButton id="x_button_-3" value="-3" action="#{areaCheckBean.setX(-3)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(-3)" onevent="drawCoordinatePlane"/>
-
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_-2" value="-2" action="#{areaCheckBean.setX(-2)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(-2)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_-1" value="-1" action="#{areaCheckBean.setX(-1)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(-1)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_0" value="0" action="#{areaCheckBean.setX(0)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(0)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_1" value="1" action="#{areaCheckBean.setX(1)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(1)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_2" value="2" action="#{areaCheckBean.setX(2)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(2)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_3" value="3" action="#{areaCheckBean.setX(3)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(3)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_4" value="4" action="#{areaCheckBean.setX(4)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(4)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
+                            <div>
                                 <h:commandButton id="x_button_5" value="5" action="#{areaCheckBean.setX(5)}">
-                                    <f:ajax execute="@this" render="@form" onclick="selectX(5)" onevent="drawCoordinatePlane"/>
+                                    <f:ajax execute="@this" render="@form" onevent="drawCoordinatePlane"/>
 
                                 </h:commandButton>
+                            </div>
 
                                 <h:inputHidden id="hiddenX" value="#{areaCheckBean.x}"/>
-                            </p>
+
                         </div>
                     </td>
                     <td>
@@ -106,15 +120,19 @@
                     </td>
 
                     <td>
+                        <div class="buttons-main">
+                            <div id="checkBut">
+                                <h:commandButton styleClass="checkButton buttonLetter" value="Run Check"
+                                                  action="#{areaCheckBean.checkArea}" >
+                                </h:commandButton>
+                            </div>
+                            <div id="clearBut">
+                                <h:commandButton styleClass="clearButton buttonLetter" value="Clear Table"
+                                                 action="#{clearResultsBean.clearResults}">
+                                </h:commandButton>
+                            </div>
+                        </div>
                         <div class="buttons">
-                            <h:commandButton styleClass="checkButton buttonLetter" value="Run Check"
-                                             action="#{areaCheckBean.checkArea}">
-                            </h:commandButton>
-
-
-                            <h:commandButton styleClass="clearButton buttonLetter" value="Clear Table"
-                                             action="#{clearResultsBean.clearResults}">
-                            </h:commandButton>
                             <h:button styleClass="startPageButton buttonLetter" outcome="change_to_index"
                                       value="Start Page"/>
                         </div>
