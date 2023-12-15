@@ -7,6 +7,9 @@
     <title>Проверка точки</title>
     <h:outputStylesheet library="css" name="style.css"/>
     <h:outputScript library="js" name="drawCoordinatePlane.js"/>
+    <h:outputScript library="js" name="showNotification.js" />
+    <h:outputScript library="js" name="validate.js" />
+
 </h:head>
 <h:body>
     <header>
@@ -19,7 +22,7 @@
             <!-- Notification content -->
         </div>
 
-        <h:form id="mainForm">
+        <h:form id="mainForm" >
             <table>
                 <thead>
                 <tr>
@@ -82,10 +85,20 @@
                         </div>
                     </td>
                     <td>
-                        <h3>Y</h3>
+                        <h3>Y</h3><h5>[-5..3]</h5>
                         <p>
-                            <h:inputText id="inputY" maxlength="5" size="6" value="#{areaCheckBean.y}"
-                                         placeholder=" от -5 до 3"/>
+                            <h:inputText id="Y-input"
+                                         name="Y-input"
+                                         type="text"
+                                         value="#{areaCheckBean.y}"
+                                         styleClass="Y-input input-area"
+                                         required="false"
+                                         maxlength="6"
+                                         validatorMessage="Не входит в [-5..3]"
+                                         converterMessage="Введите число">
+                                <f:validateDoubleRange minimum="-3" maximum="3"/>
+                                <f:ajax render="Y-value-message"/>
+                            </h:inputText>
                         </p>
                     </td>
                     <td>
@@ -94,10 +107,22 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <h3>R</h3>
+                        <h3>R</h3><h5>[2..5]</h5>
                         <p>
-                            <h:inputText id="inputR" maxlength="5" size="6" value="#{areaCheckBean.r}"
-                                         placeholder=" от 2 до 5"/>
+
+
+                            <h:inputText id="R-input"
+                                         name="R-input"
+                                         type="text"
+                                         value="#{areaCheckBean.r}"
+                                         styleClass="R-input input-area"
+                                         required="false"
+                                         maxlength="6"
+                                         validatorMessage="Не входит в [2..5]"
+                                         converterMessage="Введите число">
+                                <f:validateDoubleRange minimum="2" maximum="5"/>
+                                <f:ajax render="R-value-message"/>
+                            </h:inputText>
                         </p>
                     </td>
 
