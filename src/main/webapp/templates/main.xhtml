@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       lang="ru">
 <h:head>
     <title>Проверка точки</title>
     <h:outputStylesheet library="css" name="style.css"/>
-    <h:outputScript library="js" name="drawCoordinatePlane.js"/>
     <h:outputScript library="js" name="showNotification.js" />
-    <h:outputScript library="js" name="validate.js" />
+    <h:outputScript library="js" name="canvasPrinter.js" />
+    <h:outputScript library="js" name="onetime.js" />
+
 
 </h:head>
 <h:body>
@@ -102,28 +104,34 @@
                         </p>
                     </td>
                     <td>
-                        <canvas id="coordinateCanvas" width="500" height="500"></canvas>
+                        <div id="graph-container">
+                            <canvas id="graph" width="300" height="300"/>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <h3>R</h3><h5>[2..5]</h5>
-                        <p>
-
-
-                            <h:inputText id="R-input"
-                                         name="R-input"
-                                         type="text"
-                                         value="#{areaCheckBean.r}"
-                                         styleClass="R-input input-area"
-                                         required="false"
-                                         maxlength="6"
-                                         validatorMessage="Не входит в [2..5]"
-                                         converterMessage="Введите число">
-                                <f:validateDoubleRange minimum="2" maximum="5"/>
-                                <f:ajax render="R-value-message"/>
-                            </h:inputText>
-                        </p>
+                        <h3>R</h3>
+                        <div class="input-container" id="R-input-container">
+                            <p:outputLabel styleClass="form-label" for="@next" value="Выберите R:"/>
+                            <div class="input-area">
+                                <h:commandButton value="1" type="button" styleClass="r-button">
+                                    <f:ajax onevent="canvasPrinter.redrawAll(1)" render="r" listener="#{areaCheckBean.setR(1)}"/>
+                                </h:commandButton>
+                                <h:commandButton value="1.5" type="button" styleClass="r-button">
+                                    <f:ajax onevent="canvasPrinter.redrawAll(1.5)" render="r" listener="#{areaCheckBean.setR(1.5)}"/>
+                                </h:commandButton>
+                                <h:commandButton value="2" type="button" styleClass="r-button">
+                                    <f:ajax onevent="canvasPrinter.redrawAll(2)" render="r" listener="#{areaCheckBean.setR(2)}"/>
+                                </h:commandButton>
+                                <h:commandButton value="2.5" type="button" styleClass="r-button">
+                                    <f:ajax onevent="canvasPrinter.redrawAll(2.5)" render="r" listener="#{areaCheckBean.setR(2.5)}"/>
+                                </h:commandButton>
+                                <h:commandButton value="3" type="button" styleClass="r-button">
+                                    <f:ajax onevent="canvasPrinter.redrawAll(3)" render="r" listener="#{areaCheckBean.setR(3)}"/>
+                                </h:commandButton>
+                            </div>
+                        </div>
                     </td>
 
                     <td>
@@ -149,8 +157,8 @@
             </table>
         </h:form>
 
-        <div id="resultsTable">
-            <h:dataTable value="#{loadResultsBean.results}" var="result">
+        <div id="result">
+            <h:dataTable id="resultsTable" value="#{loadResultsBean.results}" var="result">
                 <!--suppress ELSpecValidationInJSP -->
                 <h:column><f:facet name="header">X</f:facet>#{result.x}</h:column>
                 <!--suppress ELSpecValidationInJSP -->
@@ -169,6 +177,12 @@
                 <h:column><f:facet name="header">Script Time</f:facet>#{result.executionTime} ms</h:column>
             </h:dataTable>
         </div>
+        <h:outputScript>
+            canvasPrinter.redrawAll(canvasPrinter.lastClickedR);
+        </h:outputScript>
     </div>
+    <p:remoteCommand name="addAttempt" action="#{areaCheckBean.addFromJS}" update="resultsTable" />
+    <p:remoteCommand name="loadPointsFromDb" action="#{areaCheckBean.loadPointsFromDb}" oncomplete="canvasPrinter.redrawAll(#{areaCheckBean.points})" />
+
 </h:body>
 </html>

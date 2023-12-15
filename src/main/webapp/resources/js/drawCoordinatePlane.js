@@ -5,7 +5,10 @@
  * drawCoordinatePlane draws the coordinate plane and predefined areas for the graph.
  * It also labels axes, quadrants, and provides R markers.
  */
-function drawCoordinatePlane() {
+let currentR = 2;  // Default value, update as needed
+
+function drawCoordinatePlane(r) {
+    currentR = r || currentR;  // Update R if a new value is provided
     const canvas = document.getElementById("coordinateCanvas");
     const context = canvas.getContext("2d");
 
@@ -116,6 +119,11 @@ window.onload = function() {
     drawCoordinatePlane();
     document.getElementById('coordinateCanvas').addEventListener('click', onCanvasClick);
 };
+
+function onRChange() {
+    const r = parseFloat(document.getElementById('mainForm:inputR').value);
+    drawCoordinatePlane(r);
+}
 
 // Additional function to draw a point based on the server response
 function drawPoint(x, y, hit) {
